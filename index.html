@@ -19,22 +19,52 @@
             text-decoration: none;
             border-radius: 5px;
             margin: 5px;
+            display: none; /* Hidden by default */
         }
         .download-btn:hover {
             background-color: #0056b3;
+        }
+        .error {
+            color: red;
+            display: none;
         }
     </style>
 </head>
 <body>
     <h1>Fetopia Installers</h1>
-    <p>Click the button below to download.</p>
+    <p>Enter your access code to unlock the download links:</p>
     
-    <a href="https://drive.google.com/uc?export=download&id=14LoL4WDwSyKMu5mnpII13Xg4ds3rJfdp" class="download-btn">Adobe Premiere Pro</a>
-    <a href="https://drive.google.com/uc?export=download&id=18YRU91Ec093Up02ZUrTgTuiUhiXyb0My" class="download-btn">Adobe Lightroom Classic</a>
-    <a href="https://drive.google.com/uc?export=download&id=1r9cctnuoaVZFOR4B9o_0OJlzNkTsrjYH" class="download-btn">Adobe Illustrator</a>
-    <a href="https://drive.google.com/uc?export=download&id=1iL9iw70kvBCuCxWcYXFKtG6tqPLS2qWC" class="download-btn">Adobe After Effects</a>
-    <a href="https://drive.google.com/uc?export=download&id=1qTVHXtvqr46ocJBFFL8MOTCxZLJGLf_K" class="download-btn">Adobe Photoshop</a>
-    <a href="https://drive.google.com/uc?export=download&id=1S-ytnSDzXOug7QIX8nGAgxIPYqJjXDp1" class="download-btn">MS Office Pro Plus 2021</a>
-    <a href="https://drive.google.com/uc?export=download&id=1wSZahApmJed8fqfiXj5Jq_WqGjjHculq" class="download-btn">Autodesk Autocad 2025</a>
+    <input type="text" id="access-code" placeholder="Enter access code" />
+    <button onclick="checkCode()">Submit</button>
+    
+    <p class="error" id="error-message">Invalid access code. Please try again.</p>
+    
+    <!-- Hidden download links -->
+    <a href="https://drive.google.com/uc?export=download&id=14LoL4WDwSyKMu5mnpII13Xg4ds3rJfdp" class="download-btn" id="btn-premiere">Adobe Premiere Pro</a>
+    <a href="https://drive.google.com/uc?export=download&id=18YRU91Ec093Up02ZUrTgTuiUhiXyb0My" class="download-btn" id="btn-lightroom">Adobe Lightroom Classic</a>
+    <a href="https://drive.google.com/uc?export=download&id=1r9cctnuoaVZFOR4B9o_0OJlzNkTsrjYH" class="download-btn" id="btn-illustrator">Adobe Illustrator</a>
+    <a href="https://drive.google.com/uc?export=download&id=1iL9iw70kvBCuCxWcYXFKtG6tqPLS2qWC" class="download-btn" id="btn-aftereffects">Adobe After Effects</a>
+    <a href="https://drive.google.com/uc?export=download&id=1qTVHXtvqr46ocJBFFL8MOTCxZLJGLf_K" class="download-btn" id="btn-photoshop">Adobe Photoshop</a>
+    <a href="https://drive.google.com/uc?export=download&id=1S-ytnSDzXOug7QIX8nGAgxIPYqJjXDp1" class="download-btn" id="btn-msoffice">MS Office Pro Plus 2021</a>
+    <a href="https://drive.google.com/uc?export=download&id=1wSZahApmJed8fqfiXj5Jq_WqGjjHculq" class="download-btn" id="btn-autocad">Autodesk Autocad 2025</a>
+
+    <script>
+        const validCode = 'A4X9J2R0'; // Replace with the unique access code for the user
+        
+        function checkCode() {
+            const enteredCode = document.getElementById('access-code').value;
+            const errorMessage = document.getElementById('error-message');
+
+            if (enteredCode === validCode) {
+                // Show the download buttons
+                const downloadButtons = document.querySelectorAll('.download-btn');
+                downloadButtons.forEach(button => button.style.display = 'inline-block');
+                errorMessage.style.display = 'none'; // Hide error message
+            } else {
+                // Show error message
+                errorMessage.style.display = 'block';
+            }
+        }
+    </script>
 </body>
 </html>
