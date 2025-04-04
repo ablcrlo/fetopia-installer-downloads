@@ -28,14 +28,20 @@
             color: red;
             display: none;
         }
+        .password-container {
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <h1>Fetopia Installers</h1>
     <p>Enter the password to unlock the download links:</p>
     
-    <input type="password" id="password" placeholder="Enter password" />
-    <button onclick="checkPassword()">Submit</button>
+    <div class="password-container">
+        <input type="password" id="password" placeholder="Enter password" />
+        <input type="checkbox" id="show-password"> Show Password
+        <button onclick="checkPassword()">Submit</button>
+    </div>
     
     <p class="error" id="error-message">Incorrect password. Please try again.</p>
     
@@ -49,16 +55,30 @@
     <a href="https://drive.google.com/uc?export=download&id=1wSZahApmJed8fqfiXj5Jq_WqGjjHculq" class="download-btn" id="btn-autocad">Autodesk Autocad 2025</a>
 
     <script>
-        const validPassword = 'UpdatedFetopiaInstallers2025'; // The password to access the downloads
-        
+        const validPassword = 'fetopiainstallers2025'; // The password to access the downloads
+
+        // Show/hide password when the checkbox is checked/unchecked
+        document.getElementById('show-password').addEventListener('change', function() {
+            const passwordField = document.getElementById('password');
+            if (this.checked) {
+                passwordField.type = 'text'; // Show password
+            } else {
+                passwordField.type = 'password'; // Hide password
+            }
+        });
+
         function checkPassword() {
             const enteredPassword = document.getElementById('password').value;
             const errorMessage = document.getElementById('error-message');
 
             if (enteredPassword === validPassword) {
+                // Hide the password input and submit button
+                document.querySelector('.password-container').style.display = 'none';
+                
                 // Show the download buttons
                 const downloadButtons = document.querySelectorAll('.download-btn');
                 downloadButtons.forEach(button => button.style.display = 'inline-block');
+                
                 errorMessage.style.display = 'none'; // Hide error message
             } else {
                 // Show error message
