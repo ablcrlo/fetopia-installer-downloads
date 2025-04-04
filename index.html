@@ -32,12 +32,12 @@
 </head>
 <body>
     <h1>Fetopia Installers</h1>
-    <p>Enter your access code to unlock the download links:</p>
+    <p>Enter the password to unlock the download links:</p>
     
-    <input type="text" id="access-code" placeholder="Enter access code" />
-    <button onclick="checkCode()">Submit</button>
+    <input type="password" id="password" placeholder="Enter password" />
+    <button onclick="checkPassword()">Submit</button>
     
-    <p class="error" id="error-message">Invalid access code. Please try again.</p>
+    <p class="error" id="error-message">Incorrect password. Please try again.</p>
     
     <!-- Hidden download links -->
     <a href="https://drive.google.com/uc?export=download&id=14LoL4WDwSyKMu5mnpII13Xg4ds3rJfdp" class="download-btn" id="btn-premiere">Adobe Premiere Pro</a>
@@ -49,13 +49,13 @@
     <a href="https://drive.google.com/uc?export=download&id=1wSZahApmJed8fqfiXj5Jq_WqGjjHculq" class="download-btn" id="btn-autocad">Autodesk Autocad 2025</a>
 
     <script>
-        const validCode = 'A4X9J2R0'; // Replace with the unique access code for the user
+        const validPassword = 'UpdatedFetopiaInstallers2025'; // The password to access the downloads
         
-        function checkCode() {
-            const enteredCode = document.getElementById('access-code').value;
+        function checkPassword() {
+            const enteredPassword = document.getElementById('password').value;
             const errorMessage = document.getElementById('error-message');
 
-            if (enteredCode === validCode) {
+            if (enteredPassword === validPassword) {
                 // Show the download buttons
                 const downloadButtons = document.querySelectorAll('.download-btn');
                 downloadButtons.forEach(button => button.style.display = 'inline-block');
