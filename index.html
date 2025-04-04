@@ -31,11 +31,17 @@
         .password-container {
             margin-bottom: 20px;
         }
+        .error-message {
+            margin-top: 20px;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
     <h1>Fetopia Installers</h1>
-    <p>Enter the password to unlock the download links:</p>
+    
+    <!-- This will be hidden after correct password is entered -->
+    <p id="password-prompt">Enter the password to unlock the download links:</p>
     
     <div class="password-container">
         <input type="password" id="password" placeholder="Enter password" />
@@ -43,7 +49,7 @@
         <button onclick="checkPassword()">Submit</button>
     </div>
     
-    <p class="error" id="error-message">Incorrect password. Please try again.</p>
+    <p class="error" id="error-message">Incorrect password. Please purchase access to get the password.</p>
     
     <!-- Hidden download links -->
     <a href="https://drive.google.com/uc?export=download&id=14LoL4WDwSyKMu5mnpII13Xg4ds3rJfdp" class="download-btn" id="btn-premiere">Adobe Premiere Pro</a>
@@ -55,7 +61,7 @@
     <a href="https://drive.google.com/uc?export=download&id=1wSZahApmJed8fqfiXj5Jq_WqGjjHculq" class="download-btn" id="btn-autocad">Autodesk Autocad 2025</a>
 
     <script>
-        const validPassword = 'fetopiainstallers2025'; // The password to access the downloads
+        const validPassword = 'Fetopia2025'; // The password to access the downloads
 
         // Show/hide password when the checkbox is checked/unchecked
         document.getElementById('show-password').addEventListener('change', function() {
@@ -70,10 +76,12 @@
         function checkPassword() {
             const enteredPassword = document.getElementById('password').value;
             const errorMessage = document.getElementById('error-message');
+            const passwordPrompt = document.getElementById('password-prompt');
 
             if (enteredPassword === validPassword) {
-                // Hide the password input and submit button
+                // Hide the password input, submit button, and prompt message
                 document.querySelector('.password-container').style.display = 'none';
+                passwordPrompt.style.display = 'none';
                 
                 // Show the download buttons
                 const downloadButtons = document.querySelectorAll('.download-btn');
@@ -81,8 +89,9 @@
                 
                 errorMessage.style.display = 'none'; // Hide error message
             } else {
-                // Show error message
+                // Show error message with purchase details
                 errorMessage.style.display = 'block';
+                errorMessage.innerHTML = 'Incorrect password. Please purchase access to get the password. Contact us at <a href="mailto:fetopiabusiness2@gmail.com">fetopiabusiness2@gmail.com</a> for more details.';
             }
         }
     </script>
